@@ -15,7 +15,7 @@ class ThreadedTCPRequestHandler(socketserver.BaseRequestHandler):
 
 
 class Queue:
-    client_addr = ("", 0)
+    __client_addr = ("", 0)
 
     def __init__(self, ip, port):
         print("Init server:", ip, ":", port)
@@ -37,10 +37,10 @@ class Queue:
         self.messages.append(message)
 
     def set_client_adress(self, addr):
-        self.client_addr = tuple(addr)
+        self.__client_addr = tuple(addr)
 
     def get_client_adress(self):
-        return self.client_addr
+        return self.__client_addr
 
     def view(self):
         return self.messages
