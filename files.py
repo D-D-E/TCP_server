@@ -21,4 +21,19 @@ class Files:
         print(file)
         with open(file, 'rb') as f:
             return f.read().hex()
-        #return open(file, 'rb').read()
+
+    def create_file(self, file_name, file_ext):
+        if not file_ext:
+            file = self.__path + "/" + file_name
+        else:
+            file = self.__path + "/" + file_name + "." + file_ext
+        print(file)
+        f = open(file, "w")
+        f.close()
+
+    def update_file(self, file_name, data):
+        file = self.__path + "/" + file_name
+        print(file)
+        f = open(file, "w")
+        f.write(data)
+        f.close()
