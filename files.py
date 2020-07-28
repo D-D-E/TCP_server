@@ -18,7 +18,7 @@ class Files:
 
     def get_file(self, file_name):
         file = self.__path + "/" + file_name
-        print(file)
+        print("Read: ", file)
         with open(file, 'rb') as f:
             return f.read().hex()
 
@@ -27,13 +27,26 @@ class Files:
             file = self.__path + "/" + file_name
         else:
             file = self.__path + "/" + file_name + "." + file_ext
-        print(file)
+        print("Created: ", file)
         f = open(file, "w")
         f.close()
 
+    def delete_file(self, file_name):
+        file = self.__path + "/" + file_name
+        print("Deleted: ", file)
+        if os.path.exists(file):
+            os.remove(file)
+
     def update_file(self, file_name, data):
         file = self.__path + "/" + file_name
-        print(file)
-        f = open(file, "w")
-        f.write(data)
-        f.close()
+        print("Updated: ", file)
+        with open(file, "w") as f:
+            f.write(data)
+            f.close()
+
+    def append_file(self, file_name, data):
+        file = self.__path + "/" + file_name
+        print("Updated with append: ", file)
+        with open(file, "a+") as f:
+            f.write(data)
+            f.close()
