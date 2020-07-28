@@ -39,11 +39,11 @@ class Socket(Server):
 
 
 if __name__ == "__main__":
-    dir_name = os.path.dirname(__file__)
+    dir_name = os.path.dirname(os.path.abspath(__file__))
     filename = dir_name + "/folder_for_test"
     folder = files.Files(filename)
 
-    app = Socket("localhost", 8686)
+    app = Socket("192.168.1.144", 8686)
     app.start_server()
     app.loop()
     app.stop_server()
